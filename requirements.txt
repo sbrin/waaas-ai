@@ -1,0 +1,5 @@
+# https://files.pythonhosted.org/packages/7f/f8/265532e5f81cd04d89a32afa8650eb8a2e7a7cc17ace8e7497929ad4776b/lavague-1.1.19.tar.gz
+fastapi
+uvicorn
+selenium
+lavague
