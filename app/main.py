@@ -7,8 +7,8 @@ def run_lavague():
     driver = SeleniumDriver(headless=True)
     action_engine = ActionEngine(driver)
     world_model = WorldModel()
-    world_model.add_knowledge(file_path="knowledge1.txt")
-    world_model.add_knowledge(file_path="knowledge2.txt")
+    world_model.add_knowledge(file_path="/app/knowledge1.txt")
+    world_model.add_knowledge(file_path="/app/knowledge2.txt")
     return WebAgent(world_model, action_engine)
 
 agent = run_lavague()
