@@ -1,7 +1,12 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 from lavague.drivers.selenium import SeleniumDriver
 from lavague.core import ActionEngine, WorldModel
 from lavague.core.agents import WebAgent
+
+class TaskRequest(BaseModel):
+    url: str
+    task: str
 
 def run_lavague():    
     driver = SeleniumDriver(headless=True)
@@ -15,17 +20,8 @@ agent = run_lavague()
 
 app = FastAPI()
 
-# @app.get("/")
-# def read_root():
-#     agent.get("https://wikipedia.org")
-#     agent.run("Search for AI and return it's definition")
-#     return {"result": agent.result.output}
-
 @app.post("/run_task")
-async def run_task(request):
-    if not request.url or not request.task:
-        return {"status": "error", "message": "URL and task must be defined"}
-    
+def run_task(request: TaskRequest):
     print(f"Received URL: {request.url}")
     print(f"Received task: {request.task}")
     
